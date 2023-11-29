@@ -42,7 +42,7 @@ class LabelLayer(QGraphicsRectItem):
         painter.end()
         self.update()
 
-    def _draw_bundle(self, bundle: np.ndarray): #TODO: list to array
+    def _draw_bundle(self, bundle: np.ndarray):
         painter = QPainter(self._pixmap)
         if self._erase_state:
             painter.setCompositionMode(QPainter.CompositionMode.CompositionMode_Clear)

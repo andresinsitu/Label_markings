@@ -17,7 +17,7 @@ import numpy as np
 
 class GraphicsScene(QGraphicsScene):
     label2autoseg_signal = pyqtSignal(QPointF,int)
-    autoseg2label_signal = pyqtSignal(np.ndarray) #TODO: list to array
+    autoseg2label_signal = pyqtSignal(np.ndarray)
 
     def __init__(self, parent):
         super().__init__(parent)
