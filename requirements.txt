@@ -1,0 +1,9 @@
+numpy==1.26.1
+opencv-python==4.8.1.78
+pip==23.3
+PyQt5==5.15.10
+PyQt5-Qt5==5.15.2
+PyQt5-sip==12.13.0
+scipy==1.11.4
+setuptools==68.0.0
+wheel==0.41.2
