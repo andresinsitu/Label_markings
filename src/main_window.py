@@ -79,13 +79,13 @@ class MainWindow(QMainWindow):
         self.ls_autoseg_slider.valueChanged.connect(self.on_ls_autoseg_slider_change)
 
         self.ls_threshold_value = QLabel()
-        self.ls_threshold_value.setText("Autoseg threshold : 190")
+        self.ls_threshold_value.setText("Autoseg threshold : 185")
 
         self.ls_threshold_slider = QSlider()
         self.ls_threshold_slider.setOrientation(Qt.Orientation.Horizontal)
         self.ls_threshold_slider.setMinimum(0)
-        self.ls_threshold_slider.setMaximum(12)
-        self.ls_threshold_slider.setSliderPosition(9)
+        self.ls_threshold_slider.setMaximum(18)
+        self.ls_threshold_slider.setSliderPosition(15)
         self.ls_threshold_slider.setTickInterval(1)
         self.ls_threshold_slider.setTickPosition(QSlider.TicksAbove)
         self.ls_threshold_slider.valueChanged.connect(self.on_ls_threshold_slider_change)
@@ -180,11 +180,11 @@ class MainWindow(QMainWindow):
 
     @pyqtSlot(int)
     def on_ls_threshold_slider_change(self, value: int):
-        self.ls_threshold_value.setText(f"Autoseg threshold: {100+value*10}")
+        self.ls_threshold_value.setText(f"Autoseg threshold: {110+value*5}")
         name = f"{self._image_stems[self._curr_id]}.png"
         image_path = self._image_dir / name
         autoseg_path = self._autoseg_dir / name
-        self._graphics_view.set_autoseg_threshold(str(image_path), str(autoseg_path),100+value*10)
+        self._graphics_view.set_autoseg_threshold(str(image_path), str(autoseg_path),110+value*5)
 
     @pyqtSlot(int)
     def on_bs_slider_change(self, value: int):

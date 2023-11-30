@@ -52,7 +52,7 @@ class LabelLayer(QGraphicsRectItem):
             for x,y in bundle:
                 painter.drawPoint(x,y)
         except:
-            print(f'ERROR: bundle is print {bundle}\nbundle type {type(bundle)} ')
+            print(f'ERROR: bundle is print {bundle}\nbundle shape {bundle.shape} ')
         self._bundle_to_draw = None
         painter.end()
         self.update()
