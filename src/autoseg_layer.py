@@ -79,18 +79,20 @@ class AutosegLayer(QGraphicsRectItem):
         #Comprobar si hay algún punto no negro en el círculo
         #solo usar el boundingbox, si no hay que recorrer toda la imagen
         #TODO: nada óptimo, tiene que haber mejores opciones
-        #además al ser el punto un float, hay cierto error al calcular con los píxeles
 
-        bbox = self._np_img[ymin:ymax+1,xmin:xmax+1,0] #solo miramos un color, porque todo tiene que ser 0 si es negro
+        bbox = self._np_img[ymin:ymax+2,xmin:xmax+2,0] #solo miramos un color, porque todo tiene que ser 0 si es negro
         bbox = np.squeeze(bbox)
 
         try: #a veces bbox es 1-dimensional al mover el cursor fuera de la imagen
             indices = np.where(bbox != 0)
             indices_abs = np.column_stack((indices[1]+xmin,indices[0]+ymin))
 
-            dist = scipy.spatial.distance.cdist(indices_abs,punto) 
+            dist = scipy.spatial.distance.cdist(indices_abs,(punto-np.array([0.5,0.5])))
+            #le restamos (0.5,0.5) al punto para que se centre con los índices
+            #ya que por ejemplo el punto (0.5,0.5) sería el centro del píxel (0,0)
+            #Así va a ser más exacto y no se pintan puntos fuera del cursor
 
-            dist_index = (dist.squeeze() <= int((d/2) + 1))
+            dist_index = (dist.squeeze() <= (d/2))
             puntos = indices_abs[dist_index,:]
         except:
             puntos = np.array([])
