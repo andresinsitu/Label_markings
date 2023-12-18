@@ -84,7 +84,7 @@ class MainWindow(QMainWindow):
         self.ls_threshold_slider = QSlider()
         self.ls_threshold_slider.setOrientation(Qt.Orientation.Horizontal)
         self.ls_threshold_slider.setMinimum(0)
-        self.ls_threshold_slider.setMaximum(26)
+        self.ls_threshold_slider.setMaximum(30)
         self.ls_threshold_slider.setSliderPosition(18)
         self.ls_threshold_slider.setTickInterval(1)
         self.ls_threshold_slider.setTickPosition(QSlider.TicksAbove)
